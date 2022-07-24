@@ -1,0 +1,33 @@
+[{
+    "data": {
+        "id":"V1"
+    },
+    "style": {
+        "background-color":"red"
+    },
+    "position": {
+        "x":0,
+        "y":100
+    }
+},
+{
+    "data": {
+        "id":"V2"
+    },
+    "style": {
+        "background-color":"blue"
+    },
+    "position": {
+        "x":200,
+        "y":300}
+},
+{
+    "data": {
+        "source": "V1",
+        "id":"V1_V2",
+        "target":"V2"
+    },
+    "style": {
+        "line-color": "yellow"
+    }
+}]

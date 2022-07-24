@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.12.0/css/tachyons.min.css"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="sans-serif">
+    <div class="fl w-30-l w-100-m w-100-ns w-100-s w-100-ns pa3">
+        <div class="banner">
+            <h2 class="f2 fw1">Immune Land</h2>
+        </div>
+        <button class="f6 link dim ba ph3 pv2 mb2 dib white bg-blue" onclick="toggle()">
+            <span class="f6 db">Download</span>
+        </button>
+    </div>
+    <div class="fl w-70-l w-100-m w-100-ns w-100-s w-100-ns h5">
+        <div id="plot" style="width: 500px; height: 500px;">
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.1/cytoscape.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/eligrey/FileSaver.js/master/dist/FileSaver.js"></script>
+    <script src="index.js"></script>
+    <script>
+        var plot = document.getElementById("plot");
+        var c = new CytoscapeHandler(plot);
+
+        fetch("./data.json")
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                c.load(data)
+            });
+
+        function toggle() {
+            c.downloadImage();
+        }
+    </script>
+</body>
+</html>
